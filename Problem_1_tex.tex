@@ -6,20 +6,25 @@
 \pgfplotsset{compat=1.7}
 \begin{document}
 \section*{SOEN 6011 Problem-1 Tongwei Zhang  40044711}
+\vspace{-0.4cm}
 \subsection*{F10: $\sigma$  $(sigma)$}
+\vspace{-0.3cm}
 A brief description of Function $\sigma$ \\
 The standard deviation is the arithmetic square root of the variance $(\sigma^2)$. The standard deviation reflects the degree of dispersion of a data set. The standard deviation is not necessarily the same for the two sets of data with the same average.
    $$\sigma=\sqrt{\frac{1}{n}{\sum_{i=1}^n(x_i-\bar{x})^2}}$$
+Domain: The number of samples cannot be 0\\
+Co-domain: $sigma$ \geq 0\\
 $\sigma =$ \textbf{lowercase sigma}, which means "Standard deviation"\\
 $\sum =$ \textbf{capital sigma}, which means "the sum of"\\
-$\bar{x} =$ \textbf{x bar}, which means "the mean"\\
+$\bar{x} =$ \textbf{x bar}, which means "the mean$^{[1]}$"\\
 n means \textbf{the number of samples}\\
+\vspace{-0.4cm}
 \begin{center}
 \pgfmathdeclarefunction{gauss}{2}{\pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
 }
 \begin{tikzpicture}
 \begin{axis}[no markers, domain=0:10, samples=100,
-axis lines*=left, xlabel=, ylabel=axis $y$,
+axis lines*=left, xlabel=Figure 1$^{[2]}$, ylabel=axis $y$,
 height=4cm, width=7.5cm,
 xticklabels={0, -3$\sigma$, -2$\sigma$, -1$\sigma$, 0, 1$\sigma$, 2$\sigma$, 3$\sigma$}, ytick=\empty,
 enlargelimits=false, clip=false, axis on top,
@@ -30,14 +35,15 @@ grid = major]
 \addplot [fill=blue!20, draw=none, domain=-2:-1] {gauss(0,1)} \closedcycle;
 \addplot [fill=blue!20, draw=none, domain=1:2] {gauss(0,1)} \closedcycle;
 \end{axis}
-\end{tikzpicture}    
+\end{tikzpicture}
 \end{center}
+\vspace{-0.4cm}
 The blue field is a range of values within one standard deviation from the mean. In a normal distribution, this range accounts for 68\% of all values. For a normal distribution, the ratios of the two standard deviations (blue, cyan) are combined to be 95\%. For a normal distribution, the ratio of plus or minus three standard deviations (blue, cyan, orange) is 99\%.\\
 A larger standard deviation represents a larger difference between most of the values and their average values; a smaller standard deviation means that these values are closer to the average. Generally speaking, the standard deviation is small, so it is relatively stable. It can be used in various fields such as purchasing funds, stock analysis, etc.\\
 \begin{small}
 \textbf{Reference}\\
-1. https://tex.stackexchange.com/questions/352933/drawing-a-normal-distribution-graph\\
-2. https://revisionmaths.com/gcse-maths-revision/statistics-handling-data/standard-deviation
+1. https://revisionmaths.com/gcse-maths-revision/statistics-handling-data/standard-deviation\\
+2. https://tex.stackexchange.com/questions/352933/drawing-a-normal-distribution-graph
 
 \end{small}
 \end{document}
