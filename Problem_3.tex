@@ -1,0 +1,137 @@
+\documentclass{report} 
+\usepackage{geometry}
+\geometry{left=3cm,right=2.5cm,top=1cm,bottom=2.5cm}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\makeatletter
+\newenvironment{breakablealgorithm}
+  {% \begin{breakablealgorithm}
+   \begin{center}
+     \refstepcounter{algorithm}% New algorithm
+     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+     \renewcommand{\caption}[2][\relax]{% Make a new \caption
+       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+       \ifx\relax##1\relax % #1 is \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+       \else % #1 is not \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+       \fi
+       \kern2pt\hrule\kern2pt
+     }
+  }{% \end{breakablealgorithm}
+     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+   \end{center}
+  }
+\makeatother
+\begin{document}
+\begin{breakablealgorithm}
+\caption{\textbf{Square root algorithm}}
+\begin{algorithmic}[1] 
+
+\Function {CalculateStandardDeviation}{}
+\State $samplesNumber \gets Scanner$
+\State $array \gets 0$
+\Comment{Integer array}
+\While{$i<samplesNumber$}
+\State $array[i] \gets nextInt$
+\EndWhile
+\State $average \gets GetAverage(array)$
+\State $temp = 0$
+\For{\texttt{$i<length of array$}}
+\State $temp \gets (array[i]-average)*(array[i]-average)+temp$
+\EndFor
+\State $beforeRoot \gets temp/lengthofArray$
+\State $result \gets MathSqure(beforeRoot)$
+\State \Return{result}
+\EndFunction
+
+\State
+\Function {GetAverage}{$arry$}
+\State $temp = 0$
+\For{\texttt{$i<length of array$}}
+\State $temp \gets array[i]+temp$
+\EndFor
+\State $result \gets temp/lenghtofArray$
+\State \Return{$result$}
+\EndFunction
+
+\State
+\Function {MathSqure}{$a,b$}
+\Comment{a: Number be square rooted} 
+\Comment{b: accuracy of decimal points} 
+\State $array \gets 0$
+\State $integer \gets 0$
+\If{$b>0$}
+\State $array \gets DecimalAccuracy(b)$
+\EndIf
+\State $integer \gets IntegerPart(a)$
+\State \Return{$GetResult(a,integer,array)$}
+\EndFunction
+
+\State
+\Function {DecimalAccuracy}{$b$}
+\State $array \gets 0$
+\State $integer \gets 0$
+\While{$integer\not=b$}
+\State $f \gets 1$
+\For{\texttt{$i<=integer$}}
+\State $f \gets f*10$
+\EndFor
+\State $array[integer] \gets 1/f$
+\State $integer \gets integer+1$
+\EndWhile
+\State \Return{$array$}
+\EndFunction
+
+\State
+\Function {IntegerPart}{$a$}
+\If{$a=1$}
+\State \Return{$1$}
+\EndIf
+\State $temp \gets 0$
+\For{\texttt{$i<=a/2+1$}}
+\If{$i*i=a$}
+\State $temp \gets i$
+\State \textbf{break}
+\EndIf
+\If{$i*i>a$}
+\State $temp \gets i-1$
+\State \textbf{break}
+\EndIf
+\EndFor
+\State \Return{$temp$}
+\EndFunction
+
+\State
+\Function {GetResult}{$a,integer,array$}
+\State $temp \gets integer$
+\For{\texttt{$p<length of array$}}
+\If{$p>0$}
+\State $integer \gets temp$
+\EndIf
+\For{\texttt{$j<=9$}}
+\State $temp \gets j*array[i]+integer$
+\If{$temp*temp=a$}
+\State \Return{temp}
+\EndIf
+\If{$temp*temp>a$}
+\State $d1 \gets toString(temp)$
+\Comment{d1 is BigDecimal} 
+\State $d2 \gets toString(array[p])$
+\Comment{d2 is BigDecimal} 
+\State $temp \gets d1-d2$
+\State \textbf{break}
+\EndIf
+\EndFor
+\EndFor
+\State \Return{temp}
+\EndFunction
+\end{algorithmic}
+\end{breakablealgorithm}
+
+\section*{Technical reason}
+The important thing is the approach of root, there are several approaches to calculate square root, such as Newton's method or binary method. But i choose a customized approach to get the square root.
+First of all, this method can get the integer part of the square root result, which is simple than others. Then, we can get a template of accuracy. For example, if the decimal digital accuracy is 3, the template is 0.001. Finally, we can pass integer part, decimal part and the beforeRoot number to the last function, it calculates the result by combination the integer part and decimal part, which the decimal part is dynamic in order to get the accurate decimal part.
+\section*{Advantages and disadvantages}
+The BigDecimal is used to avoid accuracy lost. It also can get the integer part of the result in a efficient way. In the meanwhile, this approach can control the number of decimal by user selection, which is use-friendly. The disadvantage is: it is a little bit more time-comsuming than the binary approach since this method use a traditional way to calculate the decimal part.
+\end{document}
