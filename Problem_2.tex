@@ -1,0 +1,53 @@
+\documentclass[11pt]{report}
+\usepackage{geometry}
+\geometry{left=3cm,right=2.5cm,top=3.5cm,bottom=2.5cm}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Tongwei Zhang}
+\chead{40044711}
+\lhead{Function Requirements}
+\cfoot{\thepage}
+\begin{document}
+\section*{Requirements Fundamentals}
+\subsection*{1 General description of Application}
+    ETERNITY:FUNCTIONS is an extension of a typical scientific calculator, each individual needs to complete one of the function that provided by project description. For this part, the \textbf{standard deviation function} needs to be implements, which is calculated by the following Mathematical formula:
+    \vspace{0.5cm}
+ $$\sigma=\sqrt{\frac{1}{n}{\sum_{i=1}^n(x_i-\bar{x})^2}}$$
+The detail requirements are presented in the following subsections.
+\subsection*{2 Stakeholders}
+The stakeholders of this ETERNITY:FUNCTIONS product is all people who will use this application calculate discreteness of sample data, developer and maintainer.
+\subsection*{3 Requirements attributes of F10:$\sigma$}
+\textbf{Re.1 \hspace{1cm} priority: 1}\hspace{1cm} Available Functions display
+\vspace{0.2cm}\\
+When the ETERNITY:FUNCTIONS calculator starts, the console should be able to display the available functions from F1:$arccos(x)$ to F10:$\sigma$.
+\vspace{0.2cm}\\
+\textbf{Re.2 \hspace{1cm} priority: 1}\hspace{1cm}  Functions selection
+\vspace{0.2cm}\\
+According to the available functions, user can select the function they want, then enter the parameter input interface.
+\vspace{0.2cm}\\
+\textbf{Re.3 \hspace{1cm} priority: 1}\hspace{1cm}  Parameter input}
+\vspace{0.2cm}\\
+The user can enter the parameter according the interface guidelines, the guidelines depends on the specific function that user selected since the needed parameters are different.
+\vspace{0.2cm}\\
+\textbf{Re.4 \hspace{1cm} priority: 3}\hspace{1cm}  Get the result}
+\vspace{0.2cm}\\
+After the parameters input, the console can show the result of selected function.
+\vspace{0.2cm}\\
+\textbf{Re.5 \hspace{1cm} priority: 2}\hspace{1cm}  Whether start another calculate}
+\vspace{0.2cm}\\
+After get the needed result, the console can provide choices either exit the application or launch another round calculation. 
+\vspace{0.2cm}\\
+\textbf{Re.6 \hspace{1cm} priority: 2}\hspace{1cm}  Input parameter validation check}
+\vspace{0.2cm}\\
+In the data input process, the application should be able to check the validation of input parameter and give the corresponding reminder.
+\vspace{0.2cm}\\
+\textbf{Re.7 \hspace{1cm} priority: 2}\hspace{1cm}  Decimal digits number selection}
+\vspace{0.2cm}\\
+After input all the sample values, the user can input the number of decimal that they want.
+\subsection*{4 ETERNITY:FUNCTIONS constraints}
+1. The implements of this scientific calculator cannot use the java internal library suck as Math and so on.\\
+2. The result of ETERNITY:FUNCTIONS should be same as the real scientific calculator. 
+\end{document}
