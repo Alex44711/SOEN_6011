@@ -1,0 +1,151 @@
+\documentclass[11pt]{report}
+\usepackage{geometry}
+\geometry{left=3cm,right=2.5cm,top=3.5cm,bottom=2.5cm}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=blue,
+    citecolor=cyan,
+}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Name: Tongwei Zhang}
+\chead{ID: 40044711}
+\lhead{Problem 4 and Problem 6}
+\cfoot{\thepage}
+\begin{document}
+\subsection*{Github Link:}
+\url{https://github.com/Alex44711/SOEN_6011}
+\section*{ETERNITY: FUNCTIONS-Problem 4}
+According to the requirements that proposed in problem 2, the function is implemented by Java from "scratch" in this section. The seven requirements are all implements in this application. All the code follow the Google Java program style and under checkStyle verification.
+\subsection*{Effort Made}
+In  order to build the correct, efficient, maintainable, robust, and usable program. I made several effort to achieve these attributes.\\
+For \textbf{usable and correct} attributes, I wrote the unit test for each function and executed the acceptance test  to keep the correct and usable of the program. According to the results of tests, the program can be proven usable and correct. For the \textbf{efficient} attribute, the most time-consuming function in this program is the square method. So, I used the Newton iteration method to get the square result of the double number, which is more efficient and accurate. To achieve the \textbf{maintainable} attribute, I seperated the program into several methods, each one corresponding to a specific requirement, and there are only the launch methods exist in the main method. which is easy to modify the function of the program or add new needs. To make the program \textbf{robust}, I added input validation check in every input statement. If the input is invalid, the console will show the corresponding reminder and request for the new input. It avoid the exception happen and improve the robust of the program.
+\subsection*{Debugger Description}
+In order to solve the problems I encountered when programming, I used the eclipse build-in debugger, which is easy to use and convenient. For debug a java application program, we need to enter the eclipse debug view first, just click the button that look like a green bug in the right-top of the window. Then, we can see the debug view, which contains lots of related views.
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline 
+View & Description\\
+\hline  
+Debug view & Mainly show the current method invoke stack and the line number of code\\
+\hline
+Variables view & Show the current mehod local fields, non-static method\\
+\hline  
+Breakpoints View & BreakPoint list window\\
+\hline  
+Expressions View & Show the current implemented expression\\
+\hline  
+Display View & Log and related contents output area\\
+\hline  
+\end{tabular}
+\end{center}
+From the related view, we can know the states of specific variables. If we want to know the state of one specific in somewhere of this program, we can set the breakpoint in this line. The approach to set the breakpoint:
+\begin{center}
+    \begin{tabular}{|c|c|}
+    \hline
+    Key&Descritpion\\
+    \hline
+    ctrl+shift+b&Set/cancel breakpoint in the cursor location\\
+    \hline
+    ctrl+alt+b&Ignore all the breakpoint\\
+    \hline
+    Alt+shift+q, b&Active all the breakpoint view\\
+    \hline
+    \end{tabular}
+\end{center}
+Then running the program and open the debug view, implement the debug process.
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    Function&Key&Description\\
+    \hline
+    Step Info&F5&single step enter the invoke method\\
+    \hline
+    Step Over&F6&Direct implement over the current code and jump to the next line\\
+    \hline
+    Step Return&F7&Single return the place of current method was invoked\\
+    \hline
+    Resume&F8&Resume the normal implementation until encounter the next breakpoint\\
+    \hline
+    \end{tabular}
+\end{center}
+In order to find the problem, the data inspection is necessary. So, we need to check the execute result of the expression. The related key is described in the following.
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    Function&Key&Description\\
+    \hline
+    Inspect&ctrl+shift+i&Check the result of variable or expression or execution.\\
+    \hline
+    Display&ctrl+shift+d&Show the result of selected variable, expression or execution.\\
+    \hline
+    Execute&ctrl+u&Implement the selected expression.\\
+    \hline
+    Run to Line&ctrl+r&Exexute to the current line.\\
+    \hline
+    All Instances&ctrl+shift+n&Check all the objects in current class.\\
+    \hline
+    \end{tabular}
+\end{center}
+Using the build-in debugger appropriately can solve most of problem we encountered in the development process.All above are about the \textbf{advantages} of the Eclipse build-in debugger. However, the \textbf{disadvantages} of debugger is it only can show the statues of variables and expressions. These statues help programmer judge the location of problem happened, it cannot find the logical error of the program automatically.
+\subsection*{Code Style Check}
+In order to check the quality of the source code, i choose the \textbf{Checkstyle} as the code quality validation tool. CheckStyle is a project under SourceForge that provides a tool to help Java developers adhere to certain coding conventions. It automates the code specification checking process, freeing developers from this important but boring task$^{[1]}$. It can check the code according to the set encoding rules$^{[2]}$. For example, variable naming in accordance with the specification, maximum number of rows in the method body, duplicate code checking, and so on. I used the Eclipse as the IDE, so i had to install the Checkstyle plugin into Eclipse. I chose the online installation, click the help$->$install new software then input the source link and click the next follow the installation interface. Restart eclipse after the installation process completed. Then, i configured the the checkstyle as google, which is the code sepcification we used$^{[3]}$.\\
+By default, it supports the java style guide for google and sun. And it's highly configurable, allowing for custom coding specifications and support for various IDEs (eclipse, Intellij) and build tools (maven, gradle). 
+After the configuration, user can right click on the code editor, select the checkstyle$->$checkcode with checkstyle, then you can see the the code highlight where the code is incompatible with the google java specification. It can help programmer dind out the details that programmers can easily ignore. The typical wrong is like the following:
+\begin{center}
+    \begin{tabular}{|c|c|}
+        \hline
+        Reminder&Solution\\
+        \hline
+        Type is missing a javadoc commentClass&add javadoc comment\\
+        \hline
+        “\{” should be on the previous line&put “\{” on previous line\\
+        \hline
+        Methos is missing a javadoc comment&add javadoc cpmment\\
+        \hline
+        “$=$” is not followed with whitespace&add a space after “$=$”\\
+        \hline
+         Line has trailing spaces&remove the extra space\\
+         \hline
+    \end{tabular}
+\end{center}
+There are many other reminders, just correct it as the reminder description. After the correct, clike the check code with checkstyle again to check if there are other lines are marked as incompatible. If there is left lines marked as incompatible, repeat the previous process again. My code does not have any incompatible with the google java specification.\\
+Except the \textbf{advantages} of Checkstyle mentioned above. The mainly \textbf{disadvantage} of Checkstyle is the Checkstyle only can find the problem where it is and show the reminder, it cannot correct it automatically. So, the programmer have to read the reminder then correct it one by one. It is not a problem in a small-scale application. But if there is application with more than 100M lines of code. It is impossible  to correct the incompatible location manually. The other problem is Checkstyle only can help people find the problem related with code style. It cannot analysis the code metrics like complexity, coupling, lines of code, declaration of method and so on.
+\section*{ETERNITY: FUNCTIONS-Problem 6}
+In order to ensure the robust, correct of this program. The Junit 5 is selected as the unit test framework. I wrote 6 test to keep the corresponding methods are correct under unit test. Since this program rely on the Scanner class, so the test will implement until the user input the parameter. As we can see following, all the 6 methods passed the unit test and ran correctly.
+\begin{center}
+    \includegraphics[scale=0.6]{unitTestResult.png}
+\end{center}
+For the \textbf{traceability} with the requirement in problem 2:
+\begin{center}
+    \begin{tabular}{|l|l|}
+    \hline
+    Requirement&correspondingUnitTest\\
+    \hline
+    1. Available Function display & functionAvailTest()\\
+    \hline
+    2. Functions selection & implStandardDeviationTest()\\
+    \hline
+    3. Parameter input & implStandardDeviationTest()\\
+    \hline
+    4. Get the result & outputTest() \& mathSqureTest()\\
+    \hline
+    5. Whether start another calculate & outputTest()\\
+    \hline
+    6. Input parameter validation check & isDoubleTest() \& isNumericTest()\\
+    \hline
+    \end{tabular}
+\end{center}
+ The corresponding relationship between unit test and requirement in problem 2 are presented in the table above. As we can see, each requirement are included in the methods of the program and there are tested by Junit. It can ensure all the requirements are satisfied by this program.
+ \section*{Reference}
+ $\left[1\right]$ https://www.cnblogs.com/woshimrf/p/using-checkstyle.html\\
+ $\left[2\right]$ https://blog.csdn.net/sunjavaduke/article/details/4708924\\
+ $\left[3\right]$ https://blog.csdn.net/qq\_36871364/article/details/72472059
+\end{document}
